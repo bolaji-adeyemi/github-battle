@@ -84,7 +84,7 @@ class Popular extends React.Component {
             return {
                 selectedLanguage: lang,
                 repos: null
-            };
+            };l
         });
         api.fetchPopularRepos(lang)
             .then(function (repos) {

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 var api = require('../utils/api');
+var Loading = require('./Loading');
 
 
 // stateless compoenent
@@ -103,7 +104,7 @@ class Popular extends React.Component {
                                 onSelect={this.updateLanguage}></SelectLanguage>
                 {/*JSON.stringify(this.state.repos, null, 2)*/}
                 {!this.state.repos
-                    ? <p>LOADING</p>
+                    ? <Loading/>
                     :<RepoGrid repos={this.state.repos}/>               }
 
             </div>

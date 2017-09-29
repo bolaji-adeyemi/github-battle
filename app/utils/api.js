@@ -1,9 +1,9 @@
 var axios = require('axios');
 
-var id = 'YOUR_CLIENT_ID';
-var sec = 'YOUR_SECRET_ID';
+var id = 'Iv1.92a89375064aab84';
+var sec = '507b2ffdc3489bb6721cc085ba8892a85dd9dbf1';
 var params = '?client_id=' + id + '&client_secret=' + sec;
-
+//21314571a7c814ab7e0f0c9c8df520500ecd2aeb
 function getProfile(username) {
     return axios.get('https://api.github.com/users/' + username + params)
         .then(function (user) {

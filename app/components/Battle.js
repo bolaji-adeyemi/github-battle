@@ -1,8 +1,8 @@
-var React = require('react');
-var PlayerInput = require('./PlayerInput');
-var PropTypes = require('prop-types');
-var Link = require('react-router-dom').Link
-var PlayerPreview = require('./PlayerPreview')
+const React = require('react');
+const PlayerInput = require('./PlayerInput');
+const PropTypes = require('prop-types');
+const Link = require('react-router-dom').Link
+const PlayerPreview = require('./PlayerPreview')
 
 
 class Battle extends React.Component {
@@ -19,29 +19,23 @@ class Battle extends React.Component {
     }
 
     handleSubmit(id, username) {
-        this.setState(function () {
-            var newState = {};
-            newState[id + 'Name'] = username;
-            newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200';
-            return newState;
-        });
+        this.setState(() => ({
+            [id + 'Name']: username,
+            [id + 'Image']: `https://github.com/${username}.png?size=200`
+        }));
     }
 
     handleReset(id) {
-        this.setState(function () {
-            var newState = {};
-            newState[id + 'Name'] = '';
-            newState[id + 'Image'] = null;
-            return newState;
-        })
+        this.setState(() => ({
+            [id + 'Name']: '',
+            [id + 'Image']: null
+        }))
     };
 
     render() {
-        var match = this.props.match;
-        var playerOneName = this.state.playerOneName;
-        var playerTwoName = this.state.playerTwoName;
-        var playerOneImage = this.state.playerOneImage;
-        var playerTwoImage = this.state.playerTwoImage;
+        const { playerOneName, playerTwoName, playerOneImage, playerTwoImage } = this.state;
+        const { match } = this.props;
+
         return (
             <div>
                 <div className="row">
@@ -59,7 +53,7 @@ class Battle extends React.Component {
                         username={playerOneName}
                        >
                         <button className="reset"
-                                onClick={this.handleReset.bind(null, 'playerOne')}
+                                onClick={() => this.handleReset('playerOne')}
                         >Reset
                         </button>
                     </PlayerPreview>
@@ -77,7 +71,7 @@ class Battle extends React.Component {
                         username={playerTwoName}
                     >
                         <button className="reset"
-                                onClick={this.handleReset.bind(null, 'playerTwo')}
+                                onClick={() => this.handleReset('playerTwo')}
                         >Reset
                         </button>
                     </PlayerPreview>
@@ -86,8 +80,7 @@ class Battle extends React.Component {
                 {playerOneImage && playerTwoImage &&
                 <Link className="button" to={{
                     pathname: match.url + '/results',
-                    search: `?playerOneName=` + playerOneName + '&playerTwoName=' +
-                    playerTwoName
+                    search: `?playerOneName=${playerOneName}&playerTwoName=${playerTwoName}`
 
                 }}>
                     Battle

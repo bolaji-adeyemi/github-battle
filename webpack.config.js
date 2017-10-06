@@ -5,7 +5,7 @@ var webpack = require('webpack');
 //NODE_ENV to production
 
 var config = {
-    entry: './app/index.js',
+    entry: ['babel-polyfill', './app/index.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index_bundle.js',
@@ -26,7 +26,7 @@ var config = {
         })
     ]
 };
-//build for production
+
 if (process.env.NODE_ENV === 'production') {
     config.plugins.push(
         new webpack.DefinePlugin({

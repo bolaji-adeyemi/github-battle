@@ -2,12 +2,10 @@ import React from 'react';
 import Popular from './Popular';
 import Home from './Home';
 import Battle from './Battle';
-import Results from './Results'
-var  ReactRouter = require('react-router-dom');
+import Results from './Results';
 import Nav from './Nav';
-var Router = ReactRouter.BrowserRouter;
-var Route = ReactRouter.Route;
-var Switch = ReactRouter.Switch;
+import  { BrowserRouter as Router, Route, Switch }  from 'react-router-dom';
+
 
 
 class App extends React.Component {
@@ -22,13 +20,10 @@ class App extends React.Component {
                         <Route exact path='/battle' component={Battle}/>
                         <Route  path='/battle/results' component={Results}/>
                         <Route path='/popular' component={Popular}/>
-                        <Route render={function () {
-                            return <p>Not Found</p>
-                        }}/>
+                        <Route render={() => <p>Not Found</p>}/>
                     </Switch>
                 </div>
             </Router>
         )
     }
-}
-module.exports = App;
+}export default App;
